@@ -1,11 +1,14 @@
-const express = require('express');
-const app = express();
-const port = 3000;
+const express = require('express')
+const db_connect=require('./db/mysql_connect') /* mysql ile bağlantı kurdu ama gizli */
+require('dotenv/config')
+const app = express()
 
-app.get('/', (req, res) => {
- res.send('Merhaba Express!');
-});
 
-app.listen(port, () => {
- console.log(`Express uygulaması ${port} numaralı bağlantı noktasında dinlemeye başladı.`);
-});
+app.get('/',function (req, res) {
+  res.send('Anasayfa')
+})
+app.get('/app',function (req, res) {
+    res.send('app sayfa')
+   })
+
+app.listen(process.env.PORT)
